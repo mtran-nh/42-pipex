@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtran-nh <mtran-nh@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 16:53:43 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/06 19:27:57 by mtran-nh         ###   ########.fr       */
+/*   Created: 2025/09/06 19:48:02 by mtran-nh          #+#    #+#             */
+/*   Updated: 2025/09/06 19:59:57 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
+#include "pipex.h"
 
-# define PIPEX_H
+static char *path_value(char **envp)
+{
+	int i;
 
-# include "../Libft/libft.h"
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <sys/wait.h>
+	i = 0;
+	while (envp && envp[i])
+	{
+		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
+			return (envp[i] + 5);
+		return (NULL);
+	}
+}
 
-
-
-
-#endif
+char *get_cmd_path(char *cmd, char **envp)
+{
+	char *path = path_value(envp);
+	if (!path)
+		return (NULL);
+	char *dup = ft_strdup(path);
+	if (!dup)
+		retun (NULL);
+	char *cmds = ft_split(dup, ":");
+	while (cmds)
+}
