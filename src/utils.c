@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/30 16:53:43 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/07 17:15:47 by mtran-nh         ###   ########.fr       */
+/*   Created: 2025/09/07 17:13:54 by mtran-nh          #+#    #+#             */
+/*   Updated: 2025/09/07 18:14:00 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
+#include "pipex.h"
 
-# define PIPEX_H
+void    free_arr(char **arr)
+{
+    int i;
 
-# include "../Libft/libft.h"
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-
-void free_arr(char **arr);
-
-
-#endif
+    i = 0;
+    if (!arr) 
+        return ;
+    while (arr[i])
+        free (arr[i++]);
+    free (arr);
+}

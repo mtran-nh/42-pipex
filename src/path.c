@@ -3,36 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtran-nh <mtran-nh@student.42heilbronn.de> +#+  +:+       +#+        */
+/*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 19:48:02 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/06 19:59:57 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/07 18:09:23 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static char *path_value(char **envp)
+static char	*path_value(char **envp)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (envp && envp[i])
 	{
 		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
 			return (envp[i] + 5);
-		return (NULL);
 	}
+	return (NULL);
 }
 
-char *get_cmd_path(char *cmd, char **envp)
+static char	*join_path(char *dir, char *cmd)
 {
-	char *path = path_value(envp);
+	char	*full_path;
+	char	*tmp;
+
+	tmp = ft_strjoin(dir, "/");
+	if (!tmp)
+		return (NULL);
+	full_path = ft_strjoin(tmp, cmd);
+	free(tmp);
+	if (!full_path)
+		return (NULL);
+	return (full_path);
+}
+
+char	*get_cmd_path(char *cmd, char **envp)
+{
+	char	*path;
+	char	**dirs;
+	int		i;
+	char	*full_path;
+
+	path = path_value(envp);
 	if (!path)
 		return (NULL);
-	char *dup = ft_strdup(path);
-	if (!dup)
-		retun (NULL);
-	char *cmds = ft_split(dup, ":");
-	while (cmds)
+	dirs = ft_split(path, ":");
+	if (!dirs)
+		return (NULL);
+	i = -1;
+	while (dirs[++i])
+	{
+		full_path = join_path(dirs[i], cmd);
+		if (!full_path)
+			return (free_arr(dirs), NULL);
+		if (!access(full_path, X_OK))
+			return (free_arr(dirs), full_path);
+		free(full_path);
+	}
+	return (free_arr(dirs), NULL);
 }
