@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 17:13:54 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/08 13:20:54 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/08 19:02:57 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,12 @@ void	free_arr(char **arr)
 	while (arr[i])
 		free(arr[i++]);
 	free(arr);
+}
+
+void	exit_error(const char *msg, char **need_free)
+{
+	if (need_free)
+		free_arr(need_free);
+	perror(msg);
+	exit(EXIT_FAILURE);
 }
