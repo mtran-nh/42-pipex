@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtran-nh <mtran-nh@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 17:13:54 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/07 18:14:00 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/08 13:20:54 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void    free_arr(char **arr)
+void	free_arr(char **arr)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (!arr) 
-        return ;
-    while (arr[i])
-        free (arr[i++]);
-    free (arr);
+	i = 0;
+	if (!arr)
+		return ;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
 }
