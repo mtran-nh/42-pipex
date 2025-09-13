@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtran-nh <mtran-nh@student.42heilbronn.de> +#+  +:+       +#+        */
+/*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 19:48:02 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/08 19:05:15 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/13 19:26:44 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../include/pipex.h"
 
 static char	*path_value(char **envp)
 {
@@ -51,7 +51,7 @@ char	*get_cmd_path(char *cmd, char **envp)
 	path = path_value(envp);
 	if (!path)
 		return (NULL);
-	dirs = ft_split(path, ":");
+	dirs = ft_split(path, ':');
 	if (!dirs)
 		return (NULL);
 	i = -1;

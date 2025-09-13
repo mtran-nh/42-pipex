@@ -6,11 +6,11 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 13:20:31 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/09 17:40:26 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/13 16:31:46 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../include/pipex.h"
 
 void	execution(char *cmd, char **envp)
 {
