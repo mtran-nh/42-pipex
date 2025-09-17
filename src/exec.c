@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 13:20:31 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/13 16:31:46 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/17 13:33:10 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,39 @@ void	execution(char *cmd, char **envp)
 
 	args = split_cmd(cmd);
 	if (!args || !args[0])
-		exit_error("failed to split cmd", args);
+	{
+		ft_putendl_fd ("failed to split cmds", 2);
+		free_double (args);
+		exit (1);
+	}
 	path = get_cmd_path(args[0], envp);
 	if (!path)
-		exit_error("command not found", args);
+	{
+		ft_putstr_fd ("command not found: ", 2);
+		ft_putendl_fd (args[0], 2);
+		free_double (args);
+		exit (127);
+	}
 	if (execve(path, args, envp) < 0)
 	{
 		free(path);
-		exit_error("execve failed", args);
+		free_double (args);
+		ft_putendl_fd ("execve failed", 2);
+		exit (126);
 	}
 }
 
-void	child_process1(int infile, int fd[2], char *cmd, char **envp)
+void	child_process(int in_fd, int out_fd, char *cmd, char **envp)
 {
-	if (dup2(infile, STDIN_FILENO) < 0)
-		exit_error("dup2 infile failed", NULL);
-	if (dup2(fd[1], STDOUT_FILENO) < 0)
-		exit_error("dup2 pipe write failed", NULL);
-	close (fd[0]);
-	close (fd[1]);
-	close (infile);
+	if (dup2(in_fd, STDIN_FILENO) < 0)
+	{
+		perror ("dup2 input");
+		exit (1);
+	}
+	if (dup2(out_fd, STDOUT_FILENO) < 0)
+	{
+		perror ("dup2 output");
+		exit (1);
+	}
 	execution(cmd, envp);
-}
-
-void	child_process2(int outfile, int fd[2], char *cmd, char **envp)
-{
-	if (dup2(fd[0], STDIN_FILENO) < 0)
-		exit_error("dup2 pipe read failed", NULL);
-	if (dup2(outfile, STDOUT_FILENO) < 0)
-		exit_error("dup2 outfile failed", NULL);
-	close (fd[0]);
-	close (fd[1]);
-	close (outfile);
-	execution (cmd, envp);
 }

@@ -6,12 +6,13 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 19:48:02 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/13 19:26:44 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/17 13:30:28 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
+// like getenv but for PATH only
 static char	*path_value(char **envp)
 {
 	int	i;
@@ -59,12 +60,12 @@ char	*get_cmd_path(char *cmd, char **envp)
 	{
 		full_path = join_path(dirs[i], cmd);
 		if (!full_path)
-			return (free_arr(dirs), NULL);
+			return (free_double(dirs), NULL);
 		if (!access(full_path, X_OK))
-			return (free_arr(dirs), full_path);
+			return (free_double(dirs), full_path);
 		free(full_path);
 	}
-	return (free_arr(dirs), NULL);
+	return (free_double(dirs), NULL);
 }
 
 char	**split_cmd(char *cmd)
