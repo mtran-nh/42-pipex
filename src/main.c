@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 19:40:17 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/17 13:30:45 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/17 13:36:17 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int	main(int ac, char **av, char **envp)
 
 	if (ac != 5)
 		exit_handle(1);
-	in_out[1] = open_file(av[1], 0);
-	in_out[2] = open_file(av[4], 1);
+	in_out[0] = open_file(av[1], 0);
+	in_out[1] = open_file(av[4], 1);
 	if (pipe(p_fd) == -1)
 		return (perror("pipe"), 1);
 	pid1 = create_child1(in_out, p_fd, av[2], envp);
