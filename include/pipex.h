@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 16:53:43 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/17 13:31:15 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/17 14:46:23 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char	**split_cmd(char *cmd);
 char	*get_cmd_path(char *cmd, char **envp);
 
 void	execution(char *cmd, char **envp);
-void	child_process(int in_fd, int out_fd, char *cmd, char **envp);
+void	child_process1(int in_out[2], int p_fd[2], char *cmd, char **envp);
+void	child_process2(int in_out[2], int p_fd[2], char *cmd, char **envp);
 
 #endif

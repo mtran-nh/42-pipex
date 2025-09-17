@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 17:13:54 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/17 13:03:23 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/17 14:21:33 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	open_file(char *file, int n)
 	if (n == 0)
 		check_open = open(file, O_RDONLY);
 	if (n == 1)
-		check_open = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+		check_open = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (check_open == -1)
 		exit(0);
 	return (check_open);
