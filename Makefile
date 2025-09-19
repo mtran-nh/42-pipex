@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+         #
+#    By: mtran-nh <mtran-nh@student.42heilbronn.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/30 16:57:29 by mtran-nh          #+#    #+#              #
-#    Updated: 2025/09/13 19:26:03 by mtran-nh         ###   ########.fr        #
+#    Updated: 2025/09/18 17:19:30 by mtran-nh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ LIBFT = Libft/libft.a
 SRCS = src/path.c \
        src/utils.c \
        src/exec.c \
-       src/main.c
+       src/main.c \
+	   src/split.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(LIBFT) $(NAME)

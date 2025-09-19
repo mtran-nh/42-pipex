@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtran-nh <mtran-nh@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 17:13:54 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/17 14:21:33 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:43:57 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	exit_handle(int ex)
 {
 	if (ex == 1)
 		ft_putstr_fd("input: ./program infile cmd1 cmd2 outfile\n", 2);
-	exit(0);
+	exit(1);
 }
 
 // 0 for infile
@@ -39,9 +39,14 @@ int	open_file(char *file, int n)
 
 	if (n == 0)
 		check_open = open(file, O_RDONLY);
-	if (n == 1)
+	else
 		check_open = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (check_open == -1)
-		exit(0);
+	{
+		ft_putstr_fd("pipex: ", 2);
+		ft_putstr_fd(file, 2);
+		ft_putendl_fd(": cannot open", 2);
+		exit(1);
+	}
 	return (check_open);
 }

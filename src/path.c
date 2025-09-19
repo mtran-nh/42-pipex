@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtran-nh <mtran-nh@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 19:48:02 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/17 13:30:28 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:19:12 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,4 @@ char	*get_cmd_path(char *cmd, char **envp)
 		free(full_path);
 	}
 	return (free_double(dirs), NULL);
-}
-
-char	**split_cmd(char *cmd)
-{
-	char	**args;
-
-	if (!cmd)
-		return (NULL);
-	args = ft_split(cmd, ' ');
-	if (!args || !args[0])
-		return (NULL);
-	return (args);
 }

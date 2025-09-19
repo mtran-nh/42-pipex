@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtran-nh <mtran-nh@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 19:40:17 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/17 14:47:30 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:26:48 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static pid_t	create_child1(int in_out[2], int p_fd[2], char *cmd,
 	pid = fork();
 	if (pid < 0)
 	{
-		perror("fork");
+		ft_putendl_fd("pipex: fork failed", 2);
 		exit(1);
 	}
 	if (pid == 0)
@@ -39,7 +39,7 @@ static pid_t	create_child2(int in_out[2], int p_fd[2], char *cmd,
 	pid = fork();
 	if (pid < 0)
 	{
-		perror("fork");
+		ft_putendl_fd("pipex: fork failed", 2);
 		exit(1);
 	}
 	if (pid == 0)
@@ -63,7 +63,7 @@ int	main(int ac, char **av, char **envp)
 	in_out[0] = open_file(av[1], 0);
 	in_out[1] = open_file(av[4], 1);
 	if (pipe(p_fd) == -1)
-		return (perror("pipe failed"), 1);
+		return (ft_putendl_fd("pipex: pipe failed", 2), 1);
 	pid1 = create_child1(in_out, p_fd, av[2], envp);
 	pid2 = create_child2(in_out, p_fd, av[3], envp);
 	close(p_fd[0]);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtran-nh <mtran-nh@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 13:20:31 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/17 14:58:52 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:36:55 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	execution(char *cmd, char **envp)
 	{
 		ft_putendl_fd("pipex: failed to split cmds", 2);
 		free_double(args);
-		exit(1);
+		exit(127);
 	}
 	path = get_cmd_path(args[0], envp);
 	if (!path)
@@ -34,9 +34,9 @@ void	execution(char *cmd, char **envp)
 	}
 	if (execve(path, args, envp) < 0)
 	{
+		ft_putendl_fd("pipex: execve failed", 2);
 		free(path);
 		free_double(args);
-		ft_putendl_fd("pipex: execve failed", 2);
 		exit(126);
 	}
 }
@@ -47,7 +47,7 @@ void	child_process1(int in_out[2], int p_fd[2], char *cmd, char **envp)
 	close(in_out[1]);
 	if (dup2(in_out[0], STDIN_FILENO) < 0 || dup2(p_fd[1], STDOUT_FILENO) < 0)
 	{
-		perror("dup2 failed");
+		ft_putendl_fd("pipex: dup2 failed", 2);
 		exit(1);
 	}
 	close(in_out[0]);
@@ -61,7 +61,7 @@ void	child_process2(int in_out[2], int p_fd[2], char *cmd, char **envp)
 	close(in_out[0]);
 	if (dup2(p_fd[0], STDIN_FILENO) < 0 || dup2(in_out[1], STDOUT_FILENO) < 0)
 	{
-		perror("dup2 failed");
+		ft_putendl_fd("pipex: dup2 failed", 2);
 		exit(1);
 	}
 	close(in_out[1]);
