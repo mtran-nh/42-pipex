@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtran-nh <mtran-nh@student.42heilbronn.de> +#+  +:+       +#+        */
+/*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 17:17:44 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/18 18:00:24 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/22 15:47:19 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ static char	*dup_arg(char *str, int pos, int len, char quote)
 
 	if (quote)
 	{
-		arg = strndup(str + pos, len);
+		arg = ft_strndup(str + pos, len);
 		if (!arg)
 			return (NULL);
 	}
 	else
 	{
-		arg = strndup(str + pos, len);
+		arg = ft_strndup(str + pos, len);
 		if (!arg)
 			return (NULL);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtran-nh <mtran-nh@student.42heilbronn.de> +#+  +:+       +#+        */
+/*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 16:25:27 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/07/16 19:04:19 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/20 22:00:48 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,25 @@ size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
-char				*ft_strchr(const char *s, int c);
 
+char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
+
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+int					ft_strcmp(const char *s1, const char *s2);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strnstr(const char *haystack, const char *needle,
 						size_t len);
+
 int					ft_atoi(const char *str);
+long				ft_atol(const char *str);
+
 void				*ft_calloc(size_t count, size_t size);
+
 char				*ft_strdup(const char *s1);
+char				*ft_strndup(const char *s, size_t n);
+
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
