@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 17:13:54 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/22 15:56:16 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/23 14:00:38 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	open_file(char *file, int n)
 		if (check_open == -1)
 		{
 			ft_putstr_fd("pipex: ", 2);
-			ft_putstr_fd(file, 2);
-			ft_putendl_fd(": No such file or directory", 2);
+			ft_putstr_fd("No such file or directory: ", 2);
+			ft_putendl_fd(file, 2);
 			check_open = open("/dev/null", O_RDONLY);
 		}
 	}
