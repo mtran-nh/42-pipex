@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 19:40:17 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/24 14:35:20 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:49:32 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,5 @@ int	main(int ac, char **av, char **envp)
 	close(in_out[1]);
 	waitpid(pid1, NULL, 0);
 	waitpid(pid2, NULL, 0);
+	return (0);
 }
