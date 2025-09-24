@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 17:43:01 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/23 19:07:34 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:20:58 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int ac, char **av, char **envp)
 	char	**cmds;
 
 	if (ac < 5)
-		exit_handle(1);
+		exit_msg("input: ./pipex_bonus infile cmd1 ... cmdn outfile", 1);
 	if (!ft_strncmp(av[1], "here_doc", 9))
 	{
 		in_out[0] = here_doc(av[2]);

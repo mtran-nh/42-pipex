@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:44:10 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/23 19:06:37 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:14:55 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@
 # endif
 
 void	free_double(char **arr);
-void	exit_handle(int ex);
+void	exit_msg(char *msg, int ex);
 int		open_infile(char *file);
 int		open_outfile(char *file, int append);
-int	    here_doc(char *limiter);
+int		here_doc(char *limiter);
 
 char	*get_next_line(int fd);
 

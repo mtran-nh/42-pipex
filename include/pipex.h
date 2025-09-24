@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 16:53:43 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/22 14:02:23 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:23:34 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define EXIT_FAILURE 1
 
 void	free_double(char **arr);
-void	exit_handle(int ex);
+void	exit_handle(char *msg, int ex);
 int		open_file(char *file, int n);
 
 char	**split_cmd(char *cmd);

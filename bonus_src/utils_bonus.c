@@ -6,7 +6,7 @@
 /*   By: mtran-nh <mtran-nh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:48:07 by mtran-nh          #+#    #+#             */
-/*   Updated: 2025/09/23 19:00:52 by mtran-nh         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:14:17 by mtran-nh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ void	free_double(char **arr)
 	free(arr);
 }
 
-void	exit_handle(int ex)
+void	exit_msg(char *msg, int ex)
 {
-	if (ex == 1)
-		ft_putstr_fd("input: ./pipex_bonus infile cmd1 ... cmdn outfile\n", 2);
-	exit(1);
+	ft_putendl_fd(msg, 2);
+	exit (ex);
 }
 
 int	open_infile(char *file)
